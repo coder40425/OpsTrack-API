@@ -1,10 +1,14 @@
 import { Task } from "../models/task.model";
+import { redisClient } from "../config/redis";
 
 export const createTaskService = async (
   title: string,
   description: string,
   userId: string
 ) => {
+
+  await redisClient.del(`tasks:${userId}:*`); //invalidate cache for this user
+
   return await Task.create({
     title,
     description,
@@ -19,6 +23,13 @@ export const getTasksService = async (
   limit: number,
   status?: string
 ) => {
+
+  const cacheKey = `tasks:${userId}:${page}:${limit}:${status}`;
+  const cached = await redisClient.get(cacheKey);
+  if(cached){
+    return JSON.parse(cached);
+  }
+
   const query: any = {};
 
   if (role !== "ADMIN") {
@@ -29,10 +40,18 @@ export const getTasksService = async (
     query.status = status;
   }
 
-  return await Task.find(query)
+  const tasks = await Task.find(query)
     .skip((page - 1) * limit)
     .limit(limit)
     .sort({ createdAt: -1 });
+
+  // Cache the result
+  await redisClient.set(cacheKey, JSON.stringify(tasks), {
+    EX: 60 //cache for 60 seconds
+  });
+
+  return tasks;
+
 };
 
 export const updateTaskService = async (
@@ -49,6 +68,9 @@ export const updateTaskService = async (
   }
 
   Object.assign(task, updates);
+
+  await redisClient.del(`tasks:${userId}:*`); //invalidate cache for this user
+
   return await task.save();
 };
 
@@ -65,5 +87,8 @@ export const deleteTaskService = async (
   }
 
   await task.deleteOne();
+
+  await redisClient.del(`tasks:${userId}:*`); //invalidate cache for this user
+  
   return { message: "Task deleted" };
 };
