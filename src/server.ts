@@ -8,7 +8,10 @@ import authRoutes from "./routes/auth.routes";
 import { authMiddleware } from "./middleware/auth.middleware";
 import taskRoutes from "./routes/task.routes";
 import { connectRedis } from './config/redis';
-
+import { apiLimiter } from './middleware/rateLimit.middleware';
+import { httpLogger } from './middleware/logger.middleware';
+import { metricsMiddleware } from './middleware/metrics.middleware';
+import { register } from './metrics/metrics';
 
 
 connectDB();
@@ -21,6 +24,9 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api", apiLimiter); //apply rate limiter to all /api routes
+app.use(httpLogger); //middleware logs request details
+app.use(metricsMiddleware); //middleware collects metrics for every request
 
 app.get("/api/profile", authMiddleware, (req: any, res) => {
   res.json({
@@ -31,6 +37,16 @@ app.get("/api/profile", authMiddleware, (req: any, res) => {
 app.get("/", (req, res) => {
     res.send("API is running...!")
 })
+
+// Prometheus will call this endpoint
+app.get("/metrics", async (req, res) => {
+
+  // content type required by Prometheus
+  res.set("Content-Type", register.contentType);
+
+  // return metrics data
+  res.end(await register.metrics());
+});
 
 const PORT = process.env.PORT || 5000;
 
