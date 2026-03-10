@@ -1,5 +1,6 @@
 import { Task } from "../models/task.model";
 import { redisClient } from "../config/redis";
+import { taskQueue } from "../queues/task.queue";
 
 export const createTaskService = async (
   title: string,
@@ -8,12 +9,23 @@ export const createTaskService = async (
 ) => {
 
   await redisClient.del(`tasks:${userId}:*`); //invalidate cache for this user
-
-  return await Task.create({
+ 
+  // create the task first so we have its id
+  const task = await Task.create({
     title,
     description,
     userId
   });
+
+  console.log("Adding job to queue...");
+
+  await taskQueue.add("taskCreated", {
+  taskId: task._id
+  });
+
+  console.log("Job added to queue");
+
+  return task;
 };
 
 export const getTasksService = async (
