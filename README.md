@@ -5,20 +5,29 @@ A **production-ready backend system** built with **Node.js, TypeScript, MongoDB,
 
 This project includes **authentication, role-based access control, caching, background jobs, rate limiting, and monitoring dashboards**.
 
+## Live API
+
+Base URL  
+https://opstrack-api.onrender.com
+
+API Documentation  
+https://opstrack-api.onrender.com/api-docs
+
+Metrics Endpoint  
+https://opstrack-api.onrender.com/metrics
+
 ---
 
 # 📸 Screenshots
 
-### Swagger API Documentation
-![Swagger UI](./screenshots/ss1.png)
+### Swagger UI
+![Swagger UI](./public/ss1.png)
 
 ### Task APIs in Swagger
-![Swagger Tasks](./screenshots/ss2.png)
+![Swagger Tasks](./public/ss2.png)
 
-### Monitoring APIs
-![Monitoring APIs](./screenshots/ss3.png)
-
-*(Add screenshots in `/screenshots` folder.)*
+### Monitoring
+![Monitoring APIs](./public/ss3.png)
 
 ---
 
