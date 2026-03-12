@@ -23,13 +23,20 @@ const router = Router();
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
  *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Yash Singh
  *               email:
  *                 type: string
+ *                 example: yash@test.com
  *               password:
  *                 type: string
- *               role:
- *                 type: string
+ *                 example: 123456
  *     responses:
  *       201:
  *         description: User created successfully
