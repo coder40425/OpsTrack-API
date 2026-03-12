@@ -252,13 +252,13 @@ JWT_SECRET=your_jwt_secret
 
 # 📦 Installation
 
-Clone the repository
+Clone the repository:
 git clone https://github.com/coder40425/OpsTrack-api.git
 
-Install dependencies
+Install dependencies:
 npm install
 
-Run development server
+Run development server:
 npm run dev
 
 ---
