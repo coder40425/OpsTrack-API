@@ -9,13 +9,13 @@ This project includes **authentication, role-based access control, caching, back
 
 # 📸 Screenshots
 
-### Swagger API Documentation
+### Swagger UI
 ![Swagger UI](./public/ss1.png)
 
 ### Task APIs in Swagger
 ![Swagger Tasks](./public/ss2.png)
 
-### Monitoring APIs
+### Monitoring
 ![Monitoring APIs](./public/ss3.png)
 
 ---
