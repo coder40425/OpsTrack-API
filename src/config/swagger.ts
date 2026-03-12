@@ -13,12 +13,12 @@ const swaggerOptions = {
 
     servers: [
   {
-    url: "http://localhost:5000",
-    description: "Local development"
-  },
-  {
     url: "https://opstrack-api.onrender.com",
     description: "Production server"
+  },
+  {
+    url: "http://localhost:5000",
+    description: "Local development"
   }
 ],
 
