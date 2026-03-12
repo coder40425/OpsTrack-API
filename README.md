@@ -5,6 +5,17 @@ A **production-ready backend system** built with **Node.js, TypeScript, MongoDB,
 
 This project includes **authentication, role-based access control, caching, background jobs, rate limiting, and monitoring dashboards**.
 
+## Live API
+
+Base URL  
+https://opstrack-api.onrender.com
+
+API Documentation  
+https://opstrack-api.onrender.com/api-docs
+
+Metrics Endpoint  
+https://opstrack-api.onrender.com/metrics
+
 ---
 
 # 📸 Screenshots
