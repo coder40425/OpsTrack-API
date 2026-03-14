@@ -139,6 +139,7 @@ Grafana
 ---
 
 # 📂 Project Structure
+```
 ops-track-api
 │
 ├── src
@@ -161,6 +162,7 @@ ops-track-api
 ├── Dockerfile
 ├── package.json
 └── README.md
+```
 
 
 ---
@@ -242,18 +244,19 @@ docker run -p 5000:5000 ops-track-api
 ---
 
 # ⚙️ Environment Variables
-
+```
 Create a `.env` file:
 
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 REDIS_URL=redis://localhost:6379
 JWT_SECRET=your_jwt_secret
+```
 
 ---
 
 # 📦 Installation
-
+```
 Clone the repository:
 git clone https://github.com/coder40425/OpsTrack-api.git
 
@@ -262,6 +265,7 @@ npm install
 
 Run development server:
 npm run dev
+```
 
 ---
 
@@ -275,12 +279,12 @@ Swagger allows interactive testing of all APIs.
 ---
 
 # 📊 Prometheus Metrics
-
+```
 Metrics endpoint:
 http://localhost:5000/metrics
 
 Prometheus scrapes metrics from this endpoint.
-
+```
 ---
 
 # 🧠 Learning Outcomes
