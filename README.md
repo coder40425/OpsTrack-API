@@ -150,13 +150,13 @@ ops-track-api
 │ │
 │ ├── controllers
 │ ├── services
-│ ├── repositories
+│ ├── metrics
 │ ├── models
 │ ├── middleware
 │ ├── routes
 │ ├── queues
+│ ├── utils
 │ ├── workers
-│ ├── metrics
 │ └── server.ts
 │
 ├── Dockerfile
