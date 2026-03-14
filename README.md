@@ -304,3 +304,11 @@ This project demonstrates:
 # 📜 License
 
 This project is open source and available under the **MIT License**
+
+## 👤 Author  
+
+*Yash Kumar Singh*  
+*NIT Durgapur (2024-2028)*
+- GitHub: [coder40425](https://github.com/coder40425)  
+- LinkedIn: [Yash Kumar Singh](https://www.linkedin.com/in/yash-kumar-singh-dev)
+
