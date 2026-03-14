@@ -32,6 +32,7 @@ https://opstrack-api.onrender.com/metrics
 ---
 
 # 🏗 Architecture Overview
+```
 Client / Postman / Swagger
 │
 ▼
@@ -49,6 +50,7 @@ Prometheus
 ▼
 Grafana
 (Monitoring UI)
+```
 
 
 ---
